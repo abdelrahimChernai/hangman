@@ -1,0 +1,34 @@
+********************************** game rules **********************************
+*									       *
+*   a player choses a word and the othes will try to find it letter by letter  *
+*									       *
+*  then the player who chosen the word will change the game ends when all the  *
+*									       *
+*                          players have chose a word                           *
+*									       *
+*         +++++++++++++++++++++++ score rules +++++++++++++++++++++++          *
+*         +							    +          *
+*         +  you have a number of attempts to guess the word, each  +	       *
+*         +							    +          *
+*         +   good tantative (i.e. the letter  given exists in the  +	       *
+*         +							    +          *
+*         +  word) the player earn 10 pts, if the player guess the  +	       *
+*         +							    +          *
+*         +  word he earn 25 pts and the player who chosed the word +	       *
+*         +							    +          *
+*         + will have his scor devided by 2, if your trail is wrong +	       *
+*         +							    +          *
+*         + you lose 5 pts, if the given letter is repeated in the  +	       *
+*         +							    +          *
+*         +  word the player earn 5 bonus points for each repition  +	       *
+*         +							    +          *
+*         +  if you use all your attempts and you have not guessed  +	       *
+*         +							    +          *
+*         +  the word, your obtained pionts will be divided by two  +          *
+*         +							    +          *
+*         + and the player who chosed the word earns 25 pts and 10  +          *
+*         +							    +          *
+*         +      pts for each player who tries to find the word     +          *
+*         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	       *
+*									       *
+********************************************************************************

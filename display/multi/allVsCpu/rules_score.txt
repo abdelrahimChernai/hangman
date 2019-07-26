@@ -1,0 +1,27 @@
+********************************** game rules **********************************
+*									       *
+*    the cumputer choses a word and the each player try a letter one by one    *
+*									       *
+*    		the player who hase the most hight score wins		       *
+*									       *
+*         +++++++++++++++++++++++ score rules +++++++++++++++++++++++          *
+*         +							    +          *
+*         +  you have a number of attempts to guess the word, each  +	       *
+*         +							    +          *
+*         +   good tantative (i.e. the letter  given exists in the  +	       *
+*         +							    +          *
+*         +  word) the player earn 10 pts, if the player guess the  +	       *
+*         +							    +          *
+*         +   word he earn 25 pts, if your trail is wrong you lose  +	       *
+*         +							    +          *
+*         + 10 pts, if the given letter is repeated in the word the +	       *
+*         +							    +          *
+*         +       player earn 5 bonus points for each repition      +	       *
+*         +							    +          *
+*         +  if you use all your attempts and you have not guessed  +	       *
+*         +							    +          *
+*         +  the word, your obtained pionts will be divided by two  +	       *
+*         +							    +          *
+*         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	       *
+*									       *
+********************************************************************************

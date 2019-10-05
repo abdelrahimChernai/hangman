@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX_SIZE 100000
+#define MAX_SIZE 100
 
 
 int linesConter(const char *fileName)
@@ -9,7 +9,7 @@ int linesConter(const char *fileName)
     FILE *theFile = NULL;
 
     theFile = fopen(fileName, "r");
-        if(theFile != 0)
+        if(theFile != NULL)
         {
             c = fgetc(theFile);
 
@@ -25,7 +25,7 @@ int linesConter(const char *fileName)
         }
         else
         {
-            printf("the file couldn't be opend");
+            printf("the file couldn't be opend\n");
         }
 
         return linesNbr;
@@ -64,6 +64,6 @@ void getWord(const char *fileName, char *target)
         }
         else
         {
-            printf("the file couldn't be opend");
+            printf("the file couldn't be opend\n");
         }
 }

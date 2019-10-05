@@ -15,7 +15,7 @@
 #define ALL_VS_CPU 1
 #define P_V_P 2
 #ifndef MAX_SIZE
-    #define MAX_SIZE 100000
+    #define MAX_SIZE 100  //don't change else you'll have a problem because you have to change it in the other fils
 #endif
 
 int main()
@@ -89,9 +89,9 @@ int main()
                 printf("\t\t\t\t%s \n", ourWord);       //to helpe the player
                 printf("\t\t\t\ttry a letter\n");        //the player givs a letter
                 printf("\t\t\t\t\t");scanf("%c", &player.letter);
-                letterInclud(cpuWord, ourWord, pointerOnPlayer);        //including the letter chosen bybthe player in his word
+                letterInclud(cpuWord, ourWord, pointerOnPlayer);        //including the letter chosen by the player in his word
                 trials--;       //mines one trial
-            }while((strcmp(ourWord, cpuWord) != 0) && (trials != 0));       //(strcmp does compair the strings) if the player word is the same with the cpu word then he has fond it
+            }while((strcmp(ourWord, cpuWord) != 0) && (trials != 0));       //(strcmp compair the strings) if the player word is the same with the cpu word then he has fond it
                                                                             // if the player has no mor tials hi didn't fond the cpu word
             if(strcmp(ourWord, cpuWord) != 0)       //if the player didn't fond the cpu word
             {

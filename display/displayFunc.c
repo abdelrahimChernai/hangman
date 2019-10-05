@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "..\structs.h"
 
-#define MAX_SIZE 100000
+#define MAX_SIZE 100
 
 void dispalyFunc(const char *fileName, int linesNbr)
 {

@@ -15,7 +15,7 @@
 #define ALL_VS_CPU 1
 #define P_V_P 2
 #ifndef MAX_SIZE
-    #define MAX_SIZE 100  //don't change else you'll have a problem because you have to change it in the other fils
+    #define MAX_SIZE 100
 #endif
 
 int main()
@@ -47,7 +47,7 @@ int main()
 
         if(mult == 'y')     //if the user chose to read the rules
         {
-            dispalyFunc(soloRulesScoreFile, linesConter(soloRulesScoreFile));       //displaying the rules (check the file display/rules_score.txt)
+            dispalyFunc(soloRulesScoreFile, linesConter(soloRulesScoreFile));       //displaying the rules (check the file "isplay/rules_score.txt")
         }
 
         do      //chosing the langueg of the words

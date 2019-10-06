@@ -6,6 +6,7 @@
 
 #include "structs.h"
 #include "functions.h"
+#include "save/save.h"
 #include "display/displayFunc.h"
 #include "wordManip/plWordInit.h"
 #include "wordManip/letterInclud.h"
@@ -33,8 +34,9 @@ int main () {
 
     if (mult == SOLO_MODE) {       //solo mode
         const char soloRulesScoreFile[] = "display/solo/rules_score.txt";     //the file that contains the ruels
-        PlInf player = {" ", 'a', 0, 0, 1};       //initializig the player data {pseudonym, letter, score, win, position}
-
+        PlInf player = {" ", ' ', 0000, 0, 0, 1};       //initializig the player data {pseudonym, letter, score, win, position}
+        pointerOnPlayer = &player;
+        
         do {        //chosing to read the rules or not to
             cleanBuffer();      //remouve the '\n' from the buffer
             printf("\t\t\t  do you want to read the rules ? \t\t\t\n");
@@ -59,8 +61,9 @@ int main () {
             stringAffect("wordManip/words/dictionaryFrancais.txt", wordsFile);     //the list of frensh words
         }
 
-        printf("\n\t\t\t\tEnter your pseudonym\n");     //geting the player pseudonym
-        printf("\t\t\t\t    ");scanf("%s", &player.pseudonym);printf("\n");
+        //printf("\n\t\t\t\tEnter your pseudonym\n");     //geting the player pseudonym
+        //printf("\t\t\t\t    ");scanf("%s", &player.pseudonym);printf("\n");
+        profileInit();
         printf("\t\t\t\tokay let's go %s\n", player.pseudonym);
         printf("\t\t\tHow many rounds do you want to play ?\n");        //geting the rounds number
         printf("\t\t\t\t\t");scanf("%d", &roundsNbr);
@@ -73,7 +76,7 @@ int main () {
             printf("\t\tThe computer has chosen a word, it's your turn now !!\n");
 
             do {     //the part wher the round hapens
-                pointerOnPlayer = &player;
+                //pointerOnPlayer = &player;
                 cleanBuffer();      //we must clean the buffer
                 printf("\t\t\tyou have %d attempts\n", trials);     //the number of the atempts remained to player
                 printf("\t\t\t\t%s \n", ourWord);       //to helpe the player

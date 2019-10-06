@@ -1,2 +1,2 @@
 all: 
-	gcc *.c *.h display\*.c display\*.h scoreManip\*.c scoreManip\*.h wordManip\*.c wordManip\*.h -w -o prog
+	gcc *.c *.h display\*.c display\*.h scoreManip\*.c scoreManip\*.h wordManip\*.c wordManip\*.h save\*.c save\*.h -w -o prog

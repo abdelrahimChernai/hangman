@@ -6,7 +6,7 @@
     {
         char pseudonym[25];     //to store the player pseudonym
         char letter;            //to stor the player letter
-        int passCode[4];        //to access the saveed profile
+        int passCode;           //to access the saveed profile
         int score;              //to store the player score (we will need it to class the players)
         int win;                //to store the win number of the player
         int position;           //the rank of the player

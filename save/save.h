@@ -1,4 +1,4 @@
-#include "struct.h"
+#include "../structs.h"
 
 #ifndef _SAVE_
 	#define _SAVE_

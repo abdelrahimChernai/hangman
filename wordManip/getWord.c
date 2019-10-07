@@ -22,6 +22,7 @@ int linesConter(const char *fileName)
 
                 c = fgetc(theFile);
             }
+            fclose(theFile)
         }
         else
         {
@@ -61,6 +62,7 @@ void getWord(const char *fileName, char *target)
             theWordLine = rand() % linesNbr;
             goToLine(theWordLine, theFile);
             fscanf(theFile, "%s", target);
+            fclose(theFile)
         }
         else
         {

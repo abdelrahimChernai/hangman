@@ -21,7 +21,7 @@
 
 int main () {
     const char menuFile[] = "display/menu.txt";       //the file containing the menu
-    char cpuWord[MAX_SIZE], ourWord[MAX_SIZE], wordsFile[MAX_SIZE];
+    char cpuWord[MAX_SIZE], ourWord[MAX_SIZE], wordsFile[MAX_SIZE], savingFile[MAX_SIZE];
     int i, j, mult, trials, roundsNbr;;       //will be used in several places as an int
     PlInf *pointerOnPlayer = NULL;       //will be used in the "letteeinclud" function
 
@@ -34,7 +34,7 @@ int main () {
 
     if (mult == SOLO_MODE) {       //solo mode
         const char soloRulesScoreFile[] = "display/solo/rules_score.txt";     //the file that contains the ruels
-        PlInf player = {"", ' ', 0000, 0, 0, 1};       //initializig the player data {pseudonym, letter, score, win, position}
+        PlInf player = {"", ' ', 0000, 0, 0, 1, 0, 0, 0, 0};       //initializig the player data {pseudonym, letter, score, win, position}
         pointerOnPlayer = &player;
 
         do {        //chosing to read the rules or not to
@@ -61,7 +61,8 @@ int main () {
             stringAffect("wordManip/words/dictionaryFrancais.txt", wordsFile);     //the list of frensh words
         }
 
-        profileInit(pointerOnPlayer);
+        stringAffect("save/save.plyr", savingFile);
+        profileInit(pointerOnPlayer, savingFile);
         printf("\t\t\t\tokay let's go %s\n", player.pseudonym);
         printf("\t\t\tHow many rounds do you want to play ?\n");        //geting the rounds number
         printf("\t\t\t\t\t");scanf("%d", &roundsNbr);

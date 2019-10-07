@@ -10,7 +10,10 @@
         int score;              //to store the player score (we will need it to class the players)
         int win;                //to store the win number of the player
         int position;           //the rank of the player
-        int plNbr;      //the nomber of the layer (player 1, player 2 ...)
+        int plNbr;              //the nomber of the layer (player 1, player 2 ...)
+        int brstScoreSolo;      //player's best score in solo mode
+        int bestScoreMult;      //player's best score in multiplayer mode
+        int bestScorePVP;       //player's best score in player vs player mode
     };
 
 #endif

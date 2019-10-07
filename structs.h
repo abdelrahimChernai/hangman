@@ -1,9 +1,6 @@
 #ifndef _STUCT_
     #define _STUCT_
-    typedef struct PlayerInfo PlInf;
-
-    struct PlayerInfo       //to save players data
-    {
+    typedef struct {            //to save players data
         char pseudonym[25];     //to store the player pseudonym
         char letter;            //to stor the player letter
         int passCode;           //to access the saveed profile
@@ -14,6 +11,11 @@
         int brstScoreSolo;      //player's best score in solo mode
         int bestScoreMult;      //player's best score in multiplayer mode
         int bestScorePVP;       //player's best score in player vs player mode
-    };
+    } PlInf;
+
+    typedef enum {
+        false = 0,
+        true
+    } Bool;
 
 #endif

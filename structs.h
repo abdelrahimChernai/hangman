@@ -14,8 +14,8 @@
     } PlInf;
 
     typedef enum {
-        false = 0,
-        true
+        False = 0,
+        True
     } Bool;
 
 #endif

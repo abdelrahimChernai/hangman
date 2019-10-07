@@ -61,7 +61,7 @@ int main () {
             stringAffect("wordManip/words/dictionaryFrancais.txt", wordsFile);     //the list of frensh words
         }
 
-        stringAffect("save/save.plyr", savingFile);
+        stringAffect("save/test.txt", savingFile);
         profileInit(pointerOnPlayer, savingFile);
         printf("\t\t\t\tokay let's go %s\n", player.pseudonym);
         printf("\t\t\tHow many rounds do you want to play ?\n");        //geting the rounds number

@@ -5,7 +5,7 @@
 #include "../structs.h"
 
 PlInf readPlayerInf (FILE* saveFile) {
-	PlInf playerData;
+	PlInf playerData = {"", ' ', 0000, 0, 0, 1, 0, 0, 0, 0};		//if the file is empty the pseudoname will be : ""
 
 	playerData.letter = fgetc(saveFile);		//we are using the letter in the struct as a buffer for the character we are geting
 	playerData.passCode = 0;					//we are using the pass code as an index
@@ -28,6 +28,24 @@ void WritePlayerInf (FILE* saveFile, PlInf *player) {
 	//fprintf(saveFile, "%s,%d,%d,%d,%d\n", );
 }
 
+Bool seekPlayer (char* playerPseudonym, FILE* saveFile) {
+	PlInf playerData;
+	Bool find = False;
+
+	playerData = readPlayerInf(saveFile);		//reading the first player in the file
+
+	while ((strcmp(playerData.pseudonym, "") != 0 /*checking if it the end of the file*/) && (!find)) {
+		if (strcmp(playerData.pseudonym, playerPseudonym) == 0) {
+			find = True;
+		}
+
+		fgetc(saveFile);						//escaping the \n at the end of the line
+		playerData = readPlayerInf(saveFile);
+	}
+
+	return find;
+}
+
 void profileInit (PlInf *player, char* saveFileName) {				//creats a player profile or giting access to it
 
 	FILE* saveFile = NULL;		//the pointer that contains the saving file
@@ -41,8 +59,11 @@ void profileInit (PlInf *player, char* saveFileName) {				//creats a player prof
 		} while (strlen(player->pseudonym) > 25);
 
 		rewind(saveFile);		//going to the start of the file
-		*player = readPlayerInf(saveFile);
-		printf("%s %d %d %d %d\n", player->pseudonym, player->passCode, player->brstScoreSolo, player->bestScoreMult, player->bestScorePVP);
+
+		if (seekPlayer("Himou", saveFile)) {
+			printf("Gocha !!!\n");
+		}
+
 		fclose(saveFile);
 	} else {
 		printf("couldn't open the file %s\n", saveFileName);

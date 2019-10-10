@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "../structs.h"
+#include "../functions.h"		//we need the cleanBuffer function
 
 PlInf readPlayerInf (FILE* saveFile) {
 	PlInf playerData = {"", ' ', 0000, 0, 0, 1, 0, 0, 0, 0};		//if the file is empty the pseudoname will be : ""
@@ -49,20 +50,40 @@ Bool seekPlayer (char* playerPseudonym, FILE* saveFile) {
 void profileInit (PlInf *player, char* saveFileName) {				//creats a player profile or giting access to it
 
 	FILE* saveFile = NULL;		//the pointer that contains the saving file
+	Bool logedIn = False;
 
 	saveFile = fopen (saveFileName, "r+");		//assining the saving file
 
 	if (saveFile != NULL) {		// checking if the file is opened 
-		do {					//checing the length of the string
-			printf("\n\t\t\tEnter your pseudonym has to have 25 or less characters\n");     //geting the player pseudonym
-			printf("\t\t\t\t    ");scanf("%s", &player->pseudonym);printf("\n");
-		} while (strlen(player->pseudonym) > 25);
+		do {
+			do {					//checing the length of the string
+				cleanBuffer();
+				printf("\n\t\tEnter your pseudonym has to have 25 or less characters\n");     //geting the player pseudonym
+				printf("\t\t\t\t    ");scanf("%s", &player->pseudonym);printf("\n");
+			} while (strlen(player->pseudonym) > 25);
 
-		rewind(saveFile);		//going to the start of the file
+			rewind(saveFile);		//going to the start of the file
 
-		if (seekPlayer("Himou", saveFile)) {
-			printf("Gocha !!!\n");
-		}
+			if (seekPlayer(player->pseudonym, saveFile)) {
+				cleanBuffer();
+				printf("\t\tIt seems that this pseudonym is already tooken\n");
+				printf("\t\tif it's you enter -- y -- if not enter -- n --\n");
+				printf("\t\t\t\t\t ");scanf("%c", &player->letter);printf("\n");
+
+				if (player->letter == 'y') {
+					do{
+							printf("\t\t\tPleas enter your Pass Code\n");
+							printf("\t\t\t\t    ");scanf("%d", &player->plNbr/*using plNbr as a buffer*/);printf("\n");
+					} while (player->plNbr != player->passCode);
+					logedIn = True;
+					printf("\t\t\tHi %s here is your scors\n", player->pseudonym);
+					printf("solo mode :%d multiplayer mode : %d player vd player mode\n", player->brstScoreSolo, player->bestScoreMult, player->bestScorePVP);
+				}
+			} else {
+				printf("\t\tHi %s it seems that this is the first time you play\n", player->pseudonym);
+				printf("pleas enter a Pass code of 4 numbers so we can safely keep your scors\n");
+			}
+		} while (!logedIn);
 
 		fclose(saveFile);
 	} else {

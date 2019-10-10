@@ -29,7 +29,7 @@ void WritePlayerInf (FILE* saveFile, PlInf *player) {
 	//fprintf(saveFile, "%s,%d,%d,%d,%d\n", );
 }
 
-Bool seekPlayer (char* playerPseudonym, FILE* saveFile) {
+PlInf seekPlayer (char* playerPseudonym, FILE* saveFile) {
 	PlInf playerData;
 	Bool find = False;
 
@@ -44,13 +44,14 @@ Bool seekPlayer (char* playerPseudonym, FILE* saveFile) {
 		playerData = readPlayerInf(saveFile);
 	}
 
-	return find;
+	return playerData;
 }
 
 void profileInit (PlInf *player, char* saveFileName) {				//creats a player profile or giting access to it
 
 	FILE* saveFile = NULL;		//the pointer that contains the saving file
 	Bool logedIn = False;
+	PlInf playerFromFile;
 
 	saveFile = fopen (saveFileName, "r+");		//assining the saving file
 
@@ -63,18 +64,21 @@ void profileInit (PlInf *player, char* saveFileName) {				//creats a player prof
 			} while (strlen(player->pseudonym) > 25);
 
 			rewind(saveFile);		//going to the start of the file
+			playerFromFile = seekPlayer(player->pseudonym, saveFile);
 
-			if (seekPlayer(player->pseudonym, saveFile)) {
+			if (strcmp(playerFromFile.pseudonym, player->pseudonym) == 0) {
+
 				cleanBuffer();
 				printf("\t\tIt seems that this pseudonym is already tooken\n");
 				printf("\t\tif it's you enter -- y -- if not enter -- n --\n");
-				printf("\t\t\t\t\t ");scanf("%c", &player->letter);printf("\n");
+				printf("\t\t\t\t\t ");scanf("%c", &player->letter);printf("\n");		//using player->letter as a buffer
 
 				if (player->letter == 'y') {
 					do{
-							printf("\t\t\tPleas enter your Pass Code\n");
-							printf("\t\t\t\t    ");scanf("%d", &player->plNbr/*using plNbr as a buffer*/);printf("\n");
-					} while (player->plNbr != player->passCode);
+						printf("\t\t\tPleas enter your Pass Code\n");
+						printf("\t\t\t\t    ");scanf("%d", &player->plNbr/*using plNbr as a buffer*/);printf("\n");
+					} while (player->passCode != playerFromFile.passCode);
+					
 					logedIn = True;
 					printf("\t\t\tHi %s here is your scors\n", player->pseudonym);
 					printf("solo mode :%d multiplayer mode : %d player vd player mode\n", player->brstScoreSolo, player->bestScoreMult, player->bestScorePVP);

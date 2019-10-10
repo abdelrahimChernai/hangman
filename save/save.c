@@ -72,7 +72,7 @@ void profileInit (PlInf *player, char* saveFileName) {				//creats a player prof
 				printf("\t\tIt seems that this pseudonym is already tooken\n");
 				printf("\t\tif it's you enter -- y -- if not enter -- n --\n");
 				printf("\t\t\t\t\t ");scanf("%c", &player->letter);printf("\n");		//using player->letter as a buffer
-
+ 
 				if (player->letter == 'y') {
 					//do{
 						cleanBuffer();

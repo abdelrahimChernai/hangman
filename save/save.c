@@ -74,14 +74,18 @@ void profileInit (PlInf *player, char* saveFileName) {				//creats a player prof
 				printf("\t\t\t\t\t ");scanf("%c", &player->letter);printf("\n");		//using player->letter as a buffer
 
 				if (player->letter == 'y') {
-					do{
+					//do{
+						cleanBuffer();
 						printf("\t\t\tPleas enter your Pass Code\n");
 						printf("\t\t\t\t    ");scanf("%d", &player->plNbr/*using plNbr as a buffer*/);printf("\n");
-					} while (player->passCode != playerFromFile.passCode);
-					
-					logedIn = True;
-					printf("\t\t\tHi %s here is your scors\n", player->pseudonym);
-					printf("solo mode :%d multiplayer mode : %d player vd player mode\n", player->brstScoreSolo, player->bestScoreMult, player->bestScorePVP);
+					//} while (player->passCode != playerFromFile.passCode);
+					if (player->passCode != playerFromFile.passCode) {		
+						logedIn = True;
+						printf("\t\t\tHi %s here is your scors\n", player->pseudonym);
+						printf("solo mode :%d multiplayer mode : %d player vd player mode\n", player->brstScoreSolo, player->bestScoreMult, player->bestScorePVP);
+					}else {
+						printf("`\t\t\tThe pass code is wrong\n");
+					}
 				}
 			} else {
 				printf("\t\tHi %s it seems that this is the first time you play\n", player->pseudonym);

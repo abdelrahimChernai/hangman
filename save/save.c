@@ -9,16 +9,16 @@ PlInf readPlayerInf (FILE* saveFile) {
 	PlInf playerData = {"", ' ', 0000, 0, 0, 1, 0, 0, 0, 0};		//if the file is empty the pseudoname will be : ""
 
 	playerData.letter = fgetc(saveFile);		//we are using the letter in the struct as a buffer for the character we are geting
-	playerData.passCode = 0;					//we are using the pass code as an index
+	int i = 0;					
 
 	while ((playerData.letter != EOF) && (playerData.letter != ',')) {
-		playerData.pseudonym[playerData.passCode] = playerData.letter;
-		playerData.passCode++;
+		playerData.pseudonym[i] = playerData.letter;
+		i++;
 		playerData.letter = fgetc(saveFile);
 	}
 
 	if (playerData.letter != EOF) {
-		playerData.pseudonym[playerData.passCode] = '\0';  //ending the string
+		playerData.pseudonym[i] = '\0';  //ending the string
 		fscanf(saveFile, "%d,%d,%d,%d", &playerData.passCode, &playerData.brstScoreSolo, &playerData.bestScoreMult, &playerData.bestScorePVP);
 	}
 
@@ -87,8 +87,12 @@ void profileInit (PlInf *player, char* saveFileName) {				//creats a player prof
 					}
 				}
 			} else {
-				printf("\tHi %s it seems that this is the first time you play\n", player->pseudonym);
-				printf("pleas enter a Pass code of 4 numbers so we can safely keep your scors\n");
+				do {
+					cleanBuffer();
+					printf("\tHi %s it seems that this is the first time you play\n", player->pseudonym);
+					printf("Pleas enter a pass code of 4 numbers so we can safely keep your scors\n");
+					printf("\t\t\t\t    ");scanf("%d", &player->passCode);printf("\n");
+				} while ((player->passCode != 0) ||(player->passCode < 1000) || (player->passCode));
 			}
 		} while (!logedIn);
 
